@@ -52,16 +52,14 @@ public class DriverManager {
                         System.out.println("CHROME_BIN not set, using default");
                     }
 
-                    options.addArguments("--headless=new");
-                    options.addArguments("--disable-gpu");
+                    options.addArguments("--headless");
                     options.addArguments("--window-size=1920,1080");
                     options.addArguments("--no-sandbox");
                     options.addArguments("--disable-dev-shm-usage");
-                    options.addArguments("--disable-setuid-sandbox");
-                    options.addArguments("--remote-debugging-port=9222");
-                    options.addArguments("--disable-software-rasterizer");
-                    options.addArguments("--remote-allow-origins=*");
-                    System.out.println("Headless mode enabled with CI-specific options");
+                    options.addArguments("--disable-gpu");
+                    System.out.println("Chrome binary: " + chromeBin);
+                    System.out.println("ChromeDriver path: "
+                            + System.getProperty("webdriver.chrome.driver"));
                 } else {
                     options.addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
                 }
@@ -71,7 +69,8 @@ public class DriverManager {
                     webDriver = new ChromeDriver(options);
                     System.out.println("ChromeDriver created successfully!");
                 } catch (Exception e) {
-                    System.err.println("Failed to create ChromeDriver: " + e.getMessage());
+                    System.err.println("=== CHROME DRIVER ERROR ===");
+                    System.err.println("Message: " + e.getMessage());
                     e.printStackTrace();
                     throw e;
                 }
