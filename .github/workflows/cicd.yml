@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        suite: [smoke.xml]
+        suites: [smoke.xml]
 
     steps:
       - name: Checkout code
