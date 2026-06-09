@@ -123,3 +123,9 @@ jobs:
           name: test-results-${{ matrix.suite }}
           path: build/test-results/test/*.xml
           retention-days: 30
+
+      - name: Show Failed Tests
+        if: always()
+        run: 
+          grep -R "<failure" build/test-results || true
+          grep -R "<error" build/test-results || true
