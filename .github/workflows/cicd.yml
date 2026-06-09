@@ -1,17 +1,18 @@
 name: CI/CD Workflow
 
 on:
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main
 
- pull_request:
-   branches:
-     - main
+  pull_request:
+    branches:
+      - main
 
- Workflow_dispatch:
-schedule:
- 	- cron: '0 11 * * *' 
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 11 * * *'
 
 
 jobs:
