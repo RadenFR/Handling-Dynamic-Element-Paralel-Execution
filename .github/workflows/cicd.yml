@@ -96,9 +96,9 @@ jobs:
       - name: Run tests with Gradle
         run: ./gradlew clean test -Psuite=${{ matrix.suite }} -Penv=staging --no-daemon --stacktrace
         env:
-          GITHUB_ACTIONS: true
-          CHROME_BIN: /usr/bin/google-chrome
-          CHROMEDRIVER_PATH: /usr/local/bin/chromedriver
+              GITHUB_ACTIONS: true
+              CHROME_BIN: /usr/bin/google-chrome-stable
+              CHROMEDRIVER_PATH: /usr/local/bin/chromedriver
 
       - name: Generate Test Report
         if: always()
